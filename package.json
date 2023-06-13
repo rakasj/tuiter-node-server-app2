@@ -1,0 +1,32 @@
+{
+  "type": "module",
+  "name": "tuiter-node-server2",
+  "version": "1.0.0",
+  "description": "Node.js HTTP Web server for the Tuiter application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakasj/tuiter-react-web-app.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTT"
+  ],
+  "author": "Julia Rakas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rakasj/tuiter-react-web-app/issues"
+  },
+  "homepage": "https://github.com/rakasj/tuiter-react-web-app#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3"
+  }
+}
