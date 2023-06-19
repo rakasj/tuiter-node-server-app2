@@ -10,7 +10,7 @@ import AuthController from './users/auth-controller.js';
 
 const app = express();
 app.use(express.json());
-mongoose.connect("mongodb://127.0.0.1:27017/tuiter");
+// mongoose.connect("mongodb://127.0.0.1:27017/tuiter");
 
 app.use(
     session({
