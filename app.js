@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import session from "express-session";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 import HelloController from "./controllers/hello-controller.js"
 import UserController from './users/users-controller.js'
@@ -24,7 +24,8 @@ app.use(
 app.use(
     cors({
         credentials: true,
-        origin: "http://localhost:3000",
+        // origin: "http://localhost:3000",
+        origin: "https://a5-3--benevolent-crumble-d54ceb.netlify.app",
     })
 );
 
