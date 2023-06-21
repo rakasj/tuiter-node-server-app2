@@ -17,33 +17,33 @@ const getUsers = async (req, res) => {
 }
 
 const register = async (req, res) => {
-    const username = req.body.username;
-    const user = usersDao.findUserByUsername(username);
+    const user = await usersDao.findUserByUsername(req.body.username);
     if (user) {
-        res.sendStatus(409);
+        res.sendStatus(403);
         return;
     }
-    const newUserInfo = req.body;
-    newUserInfo._id = (new Date()).getTime() + '';
-    const newUser = usersDao.createUser(newUserInfo);
-    currentUserVar = newUser;
-    // req.session["currentUser"] = newUser;
+    const newUser = await userDao.createUser(req.body);
+    req.session["currentUser"] = newUser;
     res.json(newUser);
 };
+
 
 const login = async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    
-    const user = usersDao.findUserByCredentials(username, password);
-    if (user) {
-        currentUserVar = user;
-        // req.session["currentUser"] = user;
-        res.json(user);
+    if (username && password) {
+        const user = await usersDao.findUserByCredentials(username, password);
+        if (user) {
+            req.session["currentUser"] = user;
+            res.json(user);
+        } else {
+            res.sendStatus(403);
+        }
     } else {
-        res.sendStatus(404);
+        res.sendStatus(403);
     }
 };
+
 const profile = async (req, res) => {
     // const currentUser = req.session["currentUser"];
     const currentUser = currentUserVar
@@ -63,12 +63,12 @@ const update = (req, res) => {
     const userId = req.params.uid;
     const updates = req.body;
     var user = usersDao.findUserById(userId);
-    
+
     if (user) {
-        user = {...user, ...updates};
+        user = { ...user, ...updates };
         usersDao.updateUser(userId, user);
     }
     res.sendStatus(200);
- };
+};
 
 export default AuthController;
