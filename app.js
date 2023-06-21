@@ -29,8 +29,9 @@ app.use(
 app.use(
     cors({
         credentials: true,
-        origin: "http://localhost:3000",
+        // origin: "http://localhost:3000",
         // origin: "https://a5-3--benevolent-crumble-d54ceb.netlify.app",
+        origin: "https://a6--shiny-pithivier-107619.netlify.app",
     })
 );
 
